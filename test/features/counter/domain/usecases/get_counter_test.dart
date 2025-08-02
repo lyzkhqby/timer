@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:scaffold_app/core/error/failures.dart';
-import 'package:scaffold_app/features/counter/domain/entities/counter.dart';
-import 'package:scaffold_app/features/counter/domain/repositories/counter_repository.dart';
-import 'package:scaffold_app/features/counter/domain/usecases/get_counter.dart';
+import 'package:timer/core/error/failures.dart';
+import 'package:timer/features/counter/domain/entities/counter.dart';
+import 'package:timer/features/counter/domain/repositories/counter_repository.dart';
+import 'package:timer/features/counter/domain/usecases/get_counter.dart';
 
 class MockCounterRepository extends Mock implements CounterRepository {}
 

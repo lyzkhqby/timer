@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:scaffold_app/main.dart';
-import 'package:scaffold_app/injection_container.dart' as di;
+import 'package:timer/main.dart';
+import 'package:timer/injection_container.dart' as di;
 
 void main() {
   setUpAll(() async {

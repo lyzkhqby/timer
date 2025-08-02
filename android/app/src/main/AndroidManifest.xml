@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="scaffold_app"
+        android:label="timer"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

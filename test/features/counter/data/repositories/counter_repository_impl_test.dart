@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:scaffold_app/core/error/exceptions.dart';
-import 'package:scaffold_app/core/error/failures.dart';
-import 'package:scaffold_app/features/counter/data/datasources/counter_local_data_source.dart';
-import 'package:scaffold_app/features/counter/data/models/counter_model.dart';
-import 'package:scaffold_app/features/counter/data/repositories/counter_repository_impl.dart';
+import 'package:timer/core/error/exceptions.dart';
+import 'package:timer/core/error/failures.dart';
+import 'package:timer/features/counter/data/datasources/counter_local_data_source.dart';
+import 'package:timer/features/counter/data/models/counter_model.dart';
+import 'package:timer/features/counter/data/repositories/counter_repository_impl.dart';
 
 class MockCounterLocalDataSource extends Mock implements CounterLocalDataSource {}
 
