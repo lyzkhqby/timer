@@ -33,3 +33,12 @@ class ValidationException implements Exception {
   @override
   String toString() => 'ValidationException: $message';
 }
+
+class NotFoundException implements Exception {
+  final String message;
+  
+  const NotFoundException(this.message);
+  
+  @override
+  String toString() => 'NotFoundException: $message';
+}
