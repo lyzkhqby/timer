@@ -42,7 +42,10 @@ class _ProjectPageState extends State<ProjectPage> {
             onPressed: () {
               context.read<ProjectsBloc>().add(RefreshProjectsEvent());
             },
-            icon: const Icon(Icons.refresh),
+            icon: Icon(
+              Icons.refresh,
+              color: colorScheme.onSurface,
+            ),
             tooltip: '刷新',
           ),
           IconButton(
@@ -54,8 +57,11 @@ class _ProjectPageState extends State<ProjectPage> {
                 ),
               );
             },
-            icon: const Icon(Icons.add),
-            tooltip: '添加项目',
+            icon: Icon(
+              Icons.add,
+              color: colorScheme.onSurface,
+            ),
+            tooltip: '新建项目',
           ),
         ],
       ),
@@ -242,20 +248,6 @@ class _ProjectPageState extends State<ProjectPage> {
 
           return const SizedBox.shrink();
         },
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          // TODO: Implement add project functionality
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('添加项目功能即将上线！'),
-            ),
-          );
-        },
-        icon: const Icon(Icons.add),
-        label: const Text('新建项目'),
-        backgroundColor: colorScheme.primary,
-        foregroundColor: colorScheme.onPrimary,
       ),
     );
   }
