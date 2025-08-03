@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/home/presentation/pages/home_page.dart';
+import '../../features/projects/presentation/pages/project_detail_page.dart';
+import '../../features/projects/presentation/bloc/project_detail_bloc.dart';
+import '../../injection_container.dart' as di;
 import 'route_names.dart';
 
 
@@ -14,6 +18,17 @@ class AppRouter {
         path: RouteNames.home,
         name: RouteNames.home,
         builder: (context, state) => const HomePage(),
+      ),
+      GoRoute(
+        path: '/project/:id',
+        name: 'projectDetail',
+        builder: (context, state) {
+          final id = int.parse(state.pathParameters['id']!);
+          return BlocProvider(
+            create: (context) => di.sl<ProjectDetailBloc>(),
+            child: ProjectDetailPage(projectId: id),
+          );
+        },
       ),
     ],
     errorBuilder: (context, state) => Scaffold(

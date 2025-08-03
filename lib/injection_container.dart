@@ -10,7 +10,9 @@ import 'features/projects/data/datasources/project_remote_data_source.dart';
 import 'features/projects/data/repositories/project_repository_impl.dart';
 import 'features/projects/domain/repositories/project_repository.dart';
 import 'features/projects/domain/usecases/get_all_projects.dart';
+import 'features/projects/domain/usecases/get_project_by_id.dart';
 import 'features/projects/presentation/bloc/projects_bloc.dart';
+import 'features/projects/presentation/bloc/project_detail_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -32,9 +34,16 @@ void _initProjects() {
       getAllProjects: sl(),
     ),
   );
+  
+  sl.registerFactory(
+    () => ProjectDetailBloc(
+      getProjectById: sl(),
+    ),
+  );
 
   // Use cases
   sl.registerLazySingleton(() => GetAllProjects(sl()));
+  sl.registerLazySingleton(() => GetProjectById(sl()));
 
   // Repository
   sl.registerLazySingleton<ProjectRepository>(

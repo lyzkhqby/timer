@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import '../bloc/projects_bloc.dart';
 import '../bloc/projects_event.dart';
 import '../bloc/projects_state.dart';
@@ -232,12 +233,7 @@ class _ProjectPageState extends State<ProjectPage> {
                   return ProjectGridCard(
                     project: project,
                     onTap: () {
-                      // TODO: Navigate to project details
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('点击了 ${project.name}'),
-                        ),
-                      );
+                      context.push('/project/${project.id}');
                     },
                   );
                 },
