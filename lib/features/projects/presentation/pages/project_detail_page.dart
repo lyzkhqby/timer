@@ -36,6 +36,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         scrolledUnderElevation: 0,
+        centerTitle: true,
         title: Text(
           '项目详情',
           style: theme.textTheme.headlineSmall?.copyWith(
@@ -161,6 +162,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
             final dateFormat = DateFormat('yyyy-MM-dd');
 
             return CustomScrollView(
+              physics: const ClampingScrollPhysics(),
               slivers: [
                 // 项目头部信息
                 SliverToBoxAdapter(
@@ -205,24 +207,6 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                                       fontWeight: FontWeight.w800,
                                       color: colorScheme.onSurface,
                                       height: 1.1,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 12),
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 12,
-                                      vertical: 6,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: colorScheme.surfaceContainerHighest,
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: Text(
-                                      'ID: ${project.id}',
-                                      style: theme.textTheme.bodyMedium?.copyWith(
-                                        color: colorScheme.onSurfaceVariant,
-                                        fontWeight: FontWeight.w600,
-                                      ),
                                     ),
                                   ),
                                 ],
@@ -317,31 +301,10 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                 // 操作按钮
                 SliverToBoxAdapter(
                   child: Container(
-                    margin: const EdgeInsets.fromLTRB(24, 0, 24, 40),
-                    child: Column(
+                    margin: const EdgeInsets.fromLTRB(24, 0, 24, 24),
+                    child: Row(
                       children: [
-                        SizedBox(
-                          width: double.infinity,
-                          child: FilledButton.icon(
-                            onPressed: () {
-                              context.push('/project/${project.id}/tasks');
-                            },
-                            icon: const Icon(Icons.assignment_rounded),
-                            label: const Text('查看任务'),
-                            style: FilledButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(vertical: 18),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(16),
-                              ),
-                              textStyle: theme.textTheme.titleMedium?.copyWith(
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 12),
-                        SizedBox(
-                          width: double.infinity,
+                        Expanded(
                           child: OutlinedButton.icon(
                             onPressed: () {
                               // TODO: Edit project functionality
@@ -368,8 +331,34 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                             ),
                           ),
                         ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: FilledButton.icon(
+                            onPressed: () {
+                              context.push('/project/${project.id}/tasks');
+                            },
+                            icon: const Icon(Icons.assignment_rounded),
+                            label: const Text('查看任务'),
+                            style: FilledButton.styleFrom(
+                              padding: const EdgeInsets.symmetric(vertical: 18),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                              textStyle: theme.textTheme.titleMedium?.copyWith(
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
+                  ),
+                ),
+
+                // 底部安全区域
+                SliverPadding(
+                  padding: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).padding.bottom + 16,
                   ),
                 ),
               ],
