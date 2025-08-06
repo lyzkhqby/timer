@@ -4,8 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/projects/presentation/pages/project_detail_page.dart';
 import '../../features/projects/presentation/bloc/project_detail_bloc.dart';
+import '../../features/tasks/presentation/pages/task_page.dart';
+import '../../features/tasks/presentation/bloc/task_bloc.dart';
 import '../../injection_container.dart' as di;
 import 'route_names.dart';
+
 
 
 
@@ -27,6 +30,22 @@ class AppRouter {
           return BlocProvider(
             create: (context) => di.sl<ProjectDetailBloc>(),
             child: ProjectDetailPage(projectId: id),
+          );
+        },
+      ),
+      GoRoute(
+        path: RouteNames.tasks,
+        name: RouteNames.tasks,
+        builder: (context, state) => const TaskPage(),
+      ),
+      GoRoute(
+        path: '/project/:projectId/tasks',
+        name: 'projectTasks',
+        builder: (context, state) {
+          final projectId = int.parse(state.pathParameters['projectId']!);
+          return BlocProvider(
+            create: (context) => di.sl<TaskBloc>(),
+            child: TaskPage(projectId: projectId),
           );
         },
       ),

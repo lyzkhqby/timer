@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/theme/app_theme.dart';
 import 'core/router/app_router.dart';
 import 'injection_container.dart' as di;
+import 'features/tasks/presentation/bloc/task_bloc.dart';
+
 import 'features/projects/presentation/bloc/projects_bloc.dart';
 
 void main() async {
@@ -20,6 +22,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<ProjectsBloc>(
           create: (context) => di.sl<ProjectsBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => di.sl<TaskBloc>(),
         ),
       ],
       child: MaterialApp.router(
